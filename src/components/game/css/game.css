@@ -1,0 +1,28 @@
+.gameField {
+    text-align: center;
+}
+
+.row {
+    height: 35px;
+}
+
+.cell {
+    display: inline-block;
+    background-color: lightgray;
+}
+
+.snake {
+    background-color: yellow;
+}
+
+.head {
+    background-color: lightskyblue;
+}
+
+.food {
+    background-color: darkred;
+}
+
+.empty {
+    background-color: lightgray;
+}

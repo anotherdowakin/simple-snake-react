@@ -1,38 +1,67 @@
-.App {
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #2C2C32;
+  --color-active: blue;
+}
+
+body {
+  margin: 0;
+  background-color: wheat;
+}
+
+header {
+  background-color: var(--color-bg);
+  padding: 2rem 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+header > a {
   color: white;
+  text-decoration: none;
+  padding: 0 1rem;
+}
+header > a:hover {
+  text-decoration: underline;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  text-align: center;
+  margin-top: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+  max-width: 900px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin: 0 auto;
+}
+
+main {
+  min-height: calc(100vh - 85px - 22px);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+main a {
+  text-decoration: none;
+  color: var(--color-bg);
+}
+main a:hover {
+  text-decoration: underline;
+}
+
+.active {
+  color: var(--color-active);
+  cursor: default;
+}
+
+.pageBody {
+  display:flex;
+}
+
+.body-block {
+  margin-left: 50px;
 }
