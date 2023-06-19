@@ -15,21 +15,25 @@ const SettingsPage = () => {
     }
 
     const changeFieldSize = (fieldSize) => {
-        setSettings({fieldSize});
+        if (fieldSize <= 50 && fieldSize >= 5) {
+            setSettings({fieldSize});
+        }
     }
 
     return <div className='pageBody'>
         <div className='body-block'>
             <h2>Level:</h2>
-            <select name="levelSettings" id="levelSettings" defaultValue={settings.title} onChange={settings => changeDifficultyLevel(settings.target.value)}>
+            <select name="levelSettings" id="levelSettings" defaultValue={settings.title}
+                    onChange={settings => changeDifficultyLevel(settings.target.value)}>
                 {DIFFICULTIES_LEVELS.map(setting => {
                     return <option key={setting.title} value={setting.title}>
                         {setting.title}
                     </option>
                 })}
             </select>
-            <h2>Field size</h2>
-            <input type='number' value={settings.fieldSize} min={5} max={50} onChange={fieldSize => changeFieldSize(fieldSize.target.value)}></input>
+            <h2>Field size (min - 5, max - 50):</h2>
+            <input type='number' value={settings.fieldSize} min={5} max={50}
+                   onChange={fieldSize => changeFieldSize(fieldSize.target.value)}></input>
         </div>
     </div>
 }
