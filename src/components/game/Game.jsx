@@ -53,8 +53,9 @@ const Game = () => {
     const direction = useRef(ARROW_RIGHT);
 
     const resetGame = () => {
-        setScore(0);
         const newSnakeCoords = getRandomCellCoords();
+
+        setScore(0);
         setSnakeCoords([newSnakeCoords]);
         setFoodCoords(getRandomFoodCoords([newSnakeCoords]));
         direction.current = ARROW_RIGHT;
@@ -95,7 +96,7 @@ const Game = () => {
 
         if (foodCords.x === newHead.x && foodCords.y === newHead.y) {
             setFoodCoords(getRandomFoodCoords(snakeCoords));
-            setScore(score => score + (1 * settings.scorePointsCoefficient));
+            setScore(score => score + settings.scorePointsCoefficient);
         }
     }, [snakeCoords])
 
@@ -110,28 +111,21 @@ const Game = () => {
                 return newCoords;
             }
 
-            if (newHeadPosition)
+            if (newHeadPosition.x !== foodCords.x || newHeadPosition.y !== foodCords.y) {
+                newCoords.shift();
+            }
 
-                if (newHeadPosition.x === foodCords.x && newHeadPosition.y === foodCords.y) {
-                    newCoords.push(newHeadPosition);
-                } else {
-                    for (let i = 0; i < newCoords.length; i++) {
-                        if (i < newCoords.length - 1) {
-                            newCoords[i] = newCoords[i + 1];
-                        } else {
-                            newCoords[i] = newHeadPosition;
-                        }
-                    }
-                }
+            newCoords.push(newHeadPosition);
+
             return newCoords;
         });
     }
 
     useInterval(() => {
-        if (!isPaused && !isGameOver && new Date().getMilliseconds() % settings.speed <= 10) {
+        if (!isPaused && !isGameOver) {
             moveSnake();
         }
-    }, 10)
+    }, settings.speed)
 
     return (
         <div className={'gameField'}>
