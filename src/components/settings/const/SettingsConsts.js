@@ -1,5 +1,5 @@
 export const EASY_LEVEL = {
-    speed: 1000,
+    speed: 150,
     scorePointsCoefficient: 0.75,
     title: 'Easy'
 }
